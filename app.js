@@ -1,9 +1,10 @@
-if (process.env.NODE_ENV === 'development') {
-    require('dotenv').config()
-}
+// if (process.env.NODE_ENV === 'development') {
+//     require('dotenv').config()
+// }
 
-// require('dotenv').config();
+require('dotenv').config();
 require('./config/mongoose');
+const errHandler = require('./middleware/errHandler');
 
 const express = require('express');
 const app = express();
@@ -16,5 +17,8 @@ app.use(express.json());
 
 // !important - must placed after other app.use
 app.use("/", router);
+
+// error handler
+app.use(errHandler);
 
 module.exports = app;

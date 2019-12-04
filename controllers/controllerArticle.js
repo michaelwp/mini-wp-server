@@ -8,7 +8,7 @@ class controllerArticle {
                 res.status(200).json(data);
             })
             .catch(err => {
-                next(res.json({message: err}));
+                next(err);
             })
     }
 
@@ -32,7 +32,7 @@ class controllerArticle {
                 });
             })
             .catch(err => {
-                next(res.json({message: err}));
+                next(err);
             })
     }
 
@@ -50,7 +50,7 @@ class controllerArticle {
                 }
             })
             .catch(err => {
-                next(res.json({message: err}));
+                next(err);
             })
     }
 
@@ -67,7 +67,7 @@ class controllerArticle {
                 }
             })
             .catch(err => {
-                next(res.json({message: err}));
+                next(err);
             })
     }
 }

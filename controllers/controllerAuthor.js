@@ -7,7 +7,7 @@ class controllerAuthor {
                 res.status(200).json(data);
             })
             .catch(err => {
-                next(res.json({message : err}));
+                next(err);
             })
     };
 
@@ -26,7 +26,7 @@ class controllerAuthor {
                 })
             })
             .catch(err => {
-                next(res.json({message : err}));
+                next(err);
             })
     }
 }
