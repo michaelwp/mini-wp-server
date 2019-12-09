@@ -2,11 +2,24 @@ const {Schema, model, models} = require('mongoose');
 
 const articleSchema = new Schema(
     {
-        title: String,
-        category: String,
+        title: {
+            type: String,
+            required: [true, 'title is required'],
+        },
+        category: {
+            type: String,
+            required: [true, 'category is required'],
+        },
         author: [{type: Schema.Types.ObjectId, ref: 'Author'}],
-        content: String,
-        quillContent: Object,
+        content: {
+            type: String,
+            required: [true, 'content is required'],
+        },
+        quillContent: {
+            type: Object,
+            required: [true, 'content is required'],
+        },
+        featured_image: String,
         created_at: Date
     }
 );
