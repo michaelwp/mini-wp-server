@@ -48,6 +48,8 @@ class controllerAuthor {
     }
 
     static loginAuthor(req, res, next) {
+        console.log(req)
+
         const errMsg = "User/ Password not found !!!";
 
         Author.findOne({
