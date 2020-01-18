@@ -7,7 +7,10 @@ class controllerAuthor {
         Author.findById(
             req.token.userId
         ).then(data => {
-            res.status(200).json(data);
+            res.status(200).json({
+                message: "User data founded",
+                details: data
+            })
         }).catch(err => {
             next(err);
         })
@@ -19,7 +22,7 @@ class controllerAuthor {
         }).then(data => {
             if (data) {
                 let token = jwt.sign({userId: data._id}, process.env.SECRET_KEY);
-                res.status(201).json({
+                res.status(200).json({
                     message: "User successfully login",
                     token: token
                 })
@@ -65,7 +68,7 @@ class controllerAuthor {
             let isMatchPassword = bcrypt.compareSync(req.body.password, data.password);
             if (!isMatchPassword) throw errMsg;
             let token = jwt.sign({userId: data._id}, process.env.SECRET_KEY);
-            res.status(201).json({
+            res.status(200).json({
                 message: "User successfully login",
                 token: token
             })

@@ -35,7 +35,7 @@ class controllerArticle {
             featured_image: path,
             created_at: Date.now()
         }).then(data => {
-            res.status(200).json({
+            res.status(201).json({
                 message: "data successfully inserted",
                 details: data
             });
@@ -106,7 +106,7 @@ class controllerArticle {
             content: req.body.content,
             featured_image: path,
         }).then(data => {
-            res.status(200).json({
+            res.status(201).json({
                 message: "data successfully updated",
                 details: data
             });
