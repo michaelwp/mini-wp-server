@@ -1,5 +1,5 @@
 const {OAuth2Client} = require('google-auth-library');
-const client = new OAuth2Client(process.env.googleClientIdDev);
+const client = new OAuth2Client(process.env.googleClientIdProd);
 
 const gSignInVerification = (req, res, next) => {
     let token = req.params.googleToken;
