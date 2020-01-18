@@ -31,6 +31,14 @@ const errHandler = (err, req, res, next) => {
             msg = err;
             errCode = 404;
             break;
+        case /length/.test(err):
+            msg = err;
+            errCode = 400;
+            break;
+        default:
+            msg = 'internal server error';
+            errCode = 500;
+            break;
     }
 
     res.status(errCode).json({message: msg});
