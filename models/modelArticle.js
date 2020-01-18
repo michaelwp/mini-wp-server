@@ -36,10 +36,6 @@ const articleSchema = new Schema(
             minlength: [100, 'title min length 100 character'],
             maxlength: [50000, 'title max length 500 character']
         },
-        quillContent: {
-            type: Object,
-            required: [true, 'content is required'],
-        },
         featured_image: String,
         created_at: {
             type: Date,

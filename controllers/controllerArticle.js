@@ -32,7 +32,6 @@ class controllerArticle {
             tags: tags,
             author: req.token.userId,
             content: req.body.content,
-            quillContent: req.body.quillContent,
             featured_image: path,
             created_at: Date.now()
         }).then(data => {
@@ -105,7 +104,6 @@ class controllerArticle {
             tags: tags,
             author: req.token.userId,
             content: req.body.content,
-            quillContent: req.body.quillContent,
             featured_image: path,
         }).then(data => {
             res.status(200).json({
