@@ -1,0 +1,9 @@
+PORT=
+MONGO_URI=
+SECRET_KEY=
+GCS_BUCKET=
+GCLOUD_PROJECT=
+GCS_KEYFILE=
+googleClientIdProd=
+googleClientIdDev=
+googleKeyDev=

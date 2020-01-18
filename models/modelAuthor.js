@@ -5,12 +5,14 @@ const authorSchema = new Schema(
     {
         name: {
             required: [true, 'name is required'],
-            type: String
+            type: String,
+            minlength: [5, 'name min length 5 character'],
+            maxlength: [30, 'name max length 30 character']
         },
-        title: String,
         email: {
             required: [true, 'email is required'],
             type: String,
+            unique: [true, 'email has been registered !!!'],
             validate: [{
                 validator: function (email) {
                     const emailRegex = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
@@ -30,9 +32,9 @@ const authorSchema = new Schema(
         },
         password: {
             required: [true, 'password is required'],
-            type: String
-        },
-        profile_pic: String
+            type: String,
+            minlength: [8, 'password min length 8 character']
+        }
     }
 );
 

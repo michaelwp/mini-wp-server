@@ -15,7 +15,7 @@ class controllerAuthor {
 
     static loginOauth(req, res, next) {
         Author.findOne({
-            email: req.params.email
+            email: req.email
         }).then(data => {
             if (data) {
                 let token = jwt.sign({userId: data._id}, process.env.SECRET_KEY);
@@ -23,6 +23,18 @@ class controllerAuthor {
                     message: "User successfully login",
                     token: token
                 })
+            } else {
+                Author.create({
+                    name: req.name,
+                    email: req.email,
+                    password: "password",
+                }).then(data => {
+                    let token = jwt.sign({userId: data._id}, process.env.SECRET_KEY);
+                    res.status(201).json({
+                        message: "data successfully created",
+                        token: token
+                    })
+                }).catch(next)
             }
         }).catch(err => {
             next(err);
@@ -32,24 +44,18 @@ class controllerAuthor {
     static createAuthor(req, res, next) {
         Author.create({
             name: req.body.name,
-            title: req.body.title,
             email: req.body.email,
             password: req.body.password,
-            profile_pic: req.body.profile_pic
         }).then(data => {
             let token = jwt.sign({userId: data._id}, process.env.SECRET_KEY);
             res.status(201).json({
                 message: "data successfully created",
                 token: token
             })
-        }).catch(err => {
-            next(err);
-        })
+        }).catch(next)
     }
 
     static loginAuthor(req, res, next) {
-        console.log(req)
-
         const errMsg = "User/ Password not found !!!";
 
         Author.findOne({
@@ -63,9 +69,7 @@ class controllerAuthor {
                 message: "User successfully login",
                 token: token
             })
-        }).catch(err => {
-            next(err);
-        })
+        }).catch(next)
     }
 }
 

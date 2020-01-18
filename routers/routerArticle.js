@@ -9,7 +9,7 @@ router.use(authenticationToken);
 const uploadHandler = multer({
     storage: multerGoogleStorage.storageEngine(),
     limits: {
-        fileSize: 1e6 // in bytes
+        fileSize: 5e6 // in bytes
     }
 });
 
@@ -25,5 +25,11 @@ router.post(
 router.get("/:title", controllerArticle.findArticle);
 // delete article (by id)
 router.delete("/:id", controllerArticle.deleteArticle);
+// update article by id
+router.put(
+    "/:id",
+    uploadHandler.single('featured_image'),
+    controllerArticle.updateArticle
+);
 
 module.exports = router;
