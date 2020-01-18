@@ -1,5 +1,6 @@
 const {OAuth2Client} = require('google-auth-library');
-const client = new OAuth2Client(process.env.googleClientIdProd);
+const googleId = process.env.googleClientId;
+const client = new OAuth2Client(googleId);
 
 const gSignInVerification = (req, res, next) => {
     let token = req.params.googleToken;
@@ -11,7 +12,7 @@ const gSignInVerification = (req, res, next) => {
     async function verify() {
         const ticket = await client.verifyIdToken({
             idToken: token,
-            audience: process.env.googleClientIdDev
+            audience: googleId
         });
         const payload = ticket.getPayload();
         if (payload.email_verified) {
