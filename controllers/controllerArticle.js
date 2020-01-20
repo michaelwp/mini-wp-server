@@ -19,7 +19,7 @@ class controllerArticle {
         if (req.body.tags) {
             let tagsSplit = req.body.tags.split(",");
             tagsSplit.forEach(tag => {
-                tags.push(tag.trim())
+                tags.push(tag.toLowerCase().trim())
             })
         }
 
@@ -91,7 +91,7 @@ class controllerArticle {
         if (req.body.tags) {
             let tagsSplit = req.body.tags.split(",");
             tagsSplit.forEach(tag => {
-                tags.push(tag.trim())
+                tags.push(tag.toLowerCase().trim())
             })
         }
 
